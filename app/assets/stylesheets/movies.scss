@@ -1,3 +1,34 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.movies {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.navigation {
+  flex: none;
+  margin: 1em;
+  width: 20em;
+}
+
+.contents {
+  flex: auto;
+  margin: 1em;
+}
+
+table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    text-align: left;
+  }
+
+  th, td {
+    padding: 0.5em 1em;
+    border: 1px solid #000;
+  }
+}

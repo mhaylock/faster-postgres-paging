@@ -1,0 +1,24 @@
+<div class="movies">
+  <div class="navigation">
+    <ul>
+      <li>Query Time: <%= @query_time %>s</li>
+      <li><%= link_to "Previous Page", previous_page_path %></li>
+      <li><%= link_to "Next Page", next_page_path %></li>
+    </ul>
+  </div>
+  <div class="contents">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Year</th>
+          <th>Runtime (minutes)</th>
+          <th>Genres</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @movies %>
+      </tbody>
+    </table>
+  </div>
+</div>

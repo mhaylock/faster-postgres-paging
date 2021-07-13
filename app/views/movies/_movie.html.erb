@@ -1,0 +1,6 @@
+<tr>
+  <td><%= movie.primary_title %></td>
+  <td><%= movie.start_year %></td>
+  <td><%= movie.runtime_minutes %></td>
+  <td><%= movie.genres.join(', ') if movie.genres.present? %></td>
+</tr>
