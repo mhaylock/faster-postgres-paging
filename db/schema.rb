@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_113416) do
+ActiveRecord::Schema.define(version: 2021_07_13_150836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_07_13_113416) do
     t.string "genres", array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["start_year", "id"], name: "index_movies_on_start_year_and_id", order: { start_year: "DESC NULLS LAST" }
   end
 
 end
