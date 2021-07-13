@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd $(dirname $0);
+
+FILENAME="tmp/title.basics.tsv"
+
+if [ ! -f "../$FILENAME" ]; then
+  curl -o "../$FILENAME.gz" \
+    "https://datasets.imdbws.com/title.basics.tsv.gz"
+
+  gunzip "../$FILENAME.gz"
+
+  echo "Downloaded database file '$FILENAME'"
+else
+  echo "Database file '$FILENAME' already exists"
+fi
