@@ -11,28 +11,19 @@ class MoviesController < ApplicationController
       movies = movies.reorder('start_year ASC NULLS FIRST, id DESC')
       movies = movies
         .where('start_year >= ?', before_movie.start_year)
-        .merge(
-          movies.where('start_year > ?', before_movie.start_year)
-          .or(
-            movies
-              .where(start_year: before_movie.start_year)
-              .where('id < ?', before_movie.id)
-          )
+        .where.not(
+          'start_year = ? AND id >= ?',
+          before_movie.start_year, before_movie.id
         )
     elsif params[:after].present?
       after_movie = Movie.find(params[:after])
       movies = movies
         .where('start_year <= ?', after_movie.start_year)
-        .merge(
-          movies.where('start_year < ?', after_movie.start_year)
-          .or(
-            movies
-              .where(start_year: after_movie.start_year)
-              .where('id > ?', after_movie.id)
-          )
+        .where.not(
+          'start_year = ? AND id <= ?',
+          after_movie.start_year, after_movie.id
         )
     end
-
 
     start = Time.now
     movies.load
