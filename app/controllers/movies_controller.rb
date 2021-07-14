@@ -35,11 +35,11 @@ class MoviesController < ApplicationController
   protected
 
   def previous_page_path
-    movies_path(before: before)
+    movies_path(before: before, page: page - 1) if page > 1
   end
 
   def next_page_path
-    movies_path(after: after)
+    movies_path(after: after, page: page + 1) if @movies.length == per_page
   end
 
   private
