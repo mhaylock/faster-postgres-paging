@@ -1,8 +1,11 @@
 # Faster Postgres Pagination Demonstration
 
-This is a scrappy example Rails application that demonstrates how "Seek Method"
+A scrappy example Rails application that demonstrates how "Seek Method"
 Pagination (also known as "Keyset Pagination") is faster than OFFSET based
 pagination.
+
+This was created for the purposes of a Ruby Meetup talk, the accompanying slide deck is
+included in this repo: [Faster Paging in Postgres](Faster%20Paging%20in%20Postgres.pdf).
 
 ## Setup
 
