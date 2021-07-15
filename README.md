@@ -35,3 +35,10 @@ of Postgres but also include ActiveRecord and some other Ruby processing time.
 
 Times are captured in the Rails MemoryStore cache, which is a complete hack and
 only appropriate for the demonstration purposes used here 😜
+
+## References
+
+* [Five ways to paginate in Postgres, from the basic to the exotic](https://www.citusdata.com/blog/2016/03/30/five-ways-to-paginate/)
+* [Pagination done the Right way](https://www.slideshare.net/MarkusWinand/p2d2-pagination-done-the-postgresql-way)
+* [Paging Through Results](https://use-the-index-luke.com/sql/partial-results/fetch-next-page)
+* (Untested) [order_query](https://github.com/glebm/order_query) gem for adding keyset pagination support to ActiveRecord.
