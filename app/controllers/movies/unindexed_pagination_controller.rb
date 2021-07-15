@@ -7,7 +7,7 @@ module Movies
         ActiveRecord::Base.connection.execute <<~SQL
           UPDATE pg_index
           SET indisvalid = false
-          WHERE indexrelid = 'index_movies_on_start_year_and_id'::regclass
+          WHERE indexrelid = 'index_movies_on_primary_title_and_id'::regclass
         SQL
 
         super

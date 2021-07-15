@@ -8,7 +8,7 @@ module Movies
 
     def movies
       Movie
-        .order('start_year DESC NULLS LAST, id ASC')
+        .order('primary_title ASC, id ASC')
         .limit(per_page)
         .offset(offset)
     end

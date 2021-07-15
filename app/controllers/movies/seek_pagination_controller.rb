@@ -40,13 +40,13 @@ module Movies
 
     def movies_before
       Movie
-        .where('start_year >= ?', before_movie.start_year)
+        .where('primary_title <= ?', before_movie.primary_title)
         .where.not(
-          'start_year = ? AND id >= ?',
-          before_movie.start_year,
+          'primary_title = ? AND id >= ?',
+          before_movie.primary_title,
           before_movie.id
         )
-        .order('start_year ASC NULLS FIRST, id DESC')
+        .order('primary_title DESC, id DESC')
         .limit(per_page)
     end
 
@@ -56,15 +56,15 @@ module Movies
 
     def movies_after
       movies = Movie
-        .order('start_year DESC NULLS LAST, id ASC')
+        .order('primary_title ASC, id ASC')
         .limit(per_page)
 
       if after_movie.present?
         movies = movies
-          .where('start_year <= ?', after_movie.start_year)
+          .where('primary_title >= ?', after_movie.primary_title)
           .where.not(
-            'start_year = ? AND id <= ?',
-            after_movie.start_year,
+            'primary_title = ? AND id <= ?',
+            after_movie.primary_title,
             after_movie.id
           )
       end
