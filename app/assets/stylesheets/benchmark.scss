@@ -1,0 +1,14 @@
+#benchmark {
+  display: flex;
+
+  .endpoint {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 1em;
+
+    iframe {
+      flex: 1;
+    }
+  }
+}

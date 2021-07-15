@@ -1,0 +1,14 @@
+<div id="benchmark">
+  <%= render partial: 'endpoint', locals: {
+    label: 'Unindexed',
+    path: 'unindexed'
+  } %>
+  <%= render partial: 'endpoint', locals: {
+    label: 'Indexed',
+    path: 'indexed'
+  } %>
+  <%= render partial: 'endpoint', locals: {
+    label: 'Seek / Keyset',
+    path: 'seek'
+  } %>
+</div>

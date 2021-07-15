@@ -2,19 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.movies {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
 .navigation {
-  flex: none;
-  margin: 1em;
-  width: 20em;
+  margin: auto 1em;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    margin: 1em;
+  }
 }
 
 .contents {
-  flex: auto;
   margin: 1em;
 }
 
