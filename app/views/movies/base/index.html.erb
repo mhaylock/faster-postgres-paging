@@ -2,9 +2,6 @@
   <div class="navigation">
     <ul>
       <li>Page: <%= page %></li>
-      <% if benchmark_direction %>
-        <li>Direction: <%= benchmark_direction %></li>
-      <% end %>
       <li>Time: <%= @query_time %>s</li>
       <li><%= link_to "Previous Page", previous_page_path %></li>
       <li><%= link_to "Next Page", next_page_path %></li>

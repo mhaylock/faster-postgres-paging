@@ -1,14 +1,17 @@
 <div id="benchmark">
   <%= render partial: 'endpoint', locals: {
-    label: 'Unindexed',
+    label: 'Offset Unindexed',
     path: 'unindexed'
   } %>
   <%= render partial: 'endpoint', locals: {
-    label: 'Indexed',
+    label: 'Offset Indexed',
     path: 'indexed'
   } %>
   <%= render partial: 'endpoint', locals: {
     label: 'Seek / Keyset',
     path: 'seek'
   } %>
+  <div class="chart">
+    <%= line_chart data_movies_benchmark_url, refresh: 1 %>
+  </div>
 </div>

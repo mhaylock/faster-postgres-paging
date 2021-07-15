@@ -2,6 +2,10 @@ module Movies
   class SeekPaginationController < BaseController
     protected
 
+    def benchmark_key
+      :seek
+    end
+
     def movies
       if before_movie.present?
         movies_before

@@ -2,6 +2,10 @@ module Movies
   class IndexedPaginationController < BaseController
     protected
 
+    def benchmark_key
+      :indexed
+    end
+
     def movies
       Movie
         .order('start_year DESC NULLS LAST, id ASC')

@@ -1,15 +1,22 @@
 module Movies
   class BaseController < ApplicationController
-    helper_method :page, :previous_page_path, :next_page_path,
-      :benchmark_direction, :next_benchmark_path
+    helper_method :page, :previous_page_path, :next_page_path, :next_benchmark_path
 
     def index
       start = Time.now
       @movies = load_movies
       @query_time = Time.now - start
+
+      benchmark_results = Rails.cache.read(benchmark_key) || {}
+      benchmark_results[page] = @query_time
+      Rails.cache.write(benchmark_key, benchmark_results)
     end
 
     protected
+
+    def benchmark_key
+      raise NotImplementedError
+    end
 
     def movies
       raise NotImplementedError
@@ -44,23 +51,26 @@ module Movies
     end
 
     def benchmark_direction
-      existing_direction = params[:benchmark_direction]
+      @benchmark_direction ||= begin
+        existing_direction = params[:benchmark_direction]
 
-      return if existing_direction.blank?
-      return if existing_direction == 'down' && page == 1
-
-      return 'down' if existing_direction == 'up' && page == 200
-      existing_direction
+        if existing_direction.blank? || (existing_direction == 'down' && page == 1)
+          nil
+        else
+          existing_direction
+        end
+      end
     end
 
     def next_benchmark_path
-      @next_benchmark_path ||=
+      @next_benchmark_path ||= begin
         case benchmark_direction
         when 'up'
           next_page_path
         when 'down'
           previous_page_path
         end
+      end
     end
 
     def page

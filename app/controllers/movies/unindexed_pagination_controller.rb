@@ -17,7 +17,11 @@ module Movies
       end
     end
 
-    private
+    protected
+
+    def benchmark_key
+      :unindexed
+    end
 
     def previous_page_path
       movies_unindexed_path(**previous_page_params) if page > 1

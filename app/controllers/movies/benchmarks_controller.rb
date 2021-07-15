@@ -3,6 +3,24 @@ module Movies
     helper_method :benchmark_start_urls
 
     def show
+      Rails.cache.clear
+    end
+
+    def data
+      render json: [
+        {
+          name: 'Offset Unindexed',
+          data: Rails.cache.read('unindexed').to_a.sort
+        },
+        {
+          name: 'Offset Indexed',
+          data: Rails.cache.read('indexed').to_a.sort
+        },
+        {
+          name: 'Seek / Keyset',
+          data: Rails.cache.read('seek').to_a.sort
+        }
+      ]
     end
 
     protected

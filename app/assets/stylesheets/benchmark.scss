@@ -1,5 +1,6 @@
 #benchmark {
   display: flex;
+  flex-wrap: wrap;
 
   .endpoint {
     display: flex;
@@ -10,5 +11,10 @@
     iframe {
       flex: 1;
     }
+  }
+
+  .chart {
+    flex: 0 0 100%;
+    padding: 1em;
   }
 }
