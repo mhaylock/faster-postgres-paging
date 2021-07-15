@@ -40,12 +40,7 @@ module Movies
 
     def movies_before
       Movie
-        .where('primary_title <= ?', before_movie.primary_title)
-        .where.not(
-          'primary_title = ? AND id >= ?',
-          before_movie.primary_title,
-          before_movie.id
-        )
+        .where('(primary_title, id) < (?, ?)', before_movie.primary_title, before_movie.id)
         .order('primary_title DESC, id DESC')
         .limit(per_page)
     end
@@ -61,12 +56,7 @@ module Movies
 
       if after_movie.present?
         movies = movies
-          .where('primary_title >= ?', after_movie.primary_title)
-          .where.not(
-            'primary_title = ? AND id <= ?',
-            after_movie.primary_title,
-            after_movie.id
-          )
+          .where('(primary_title, id) > (?, ?)', after_movie.primary_title, after_movie.id)
       end
 
       movies
