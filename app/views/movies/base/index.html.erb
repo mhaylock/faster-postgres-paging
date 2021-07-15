@@ -28,6 +28,6 @@
 </div>
 <% if next_benchmark_path.present? %>
   <script>
-    window.location.replace("<%= next_benchmark_path %>");
+    Turbolinks.visit("<%= next_benchmark_path %>");
   </script>
 <% end %>
