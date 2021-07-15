@@ -1,10 +1,10 @@
 #benchmark {
-  display: flex;
-  flex-wrap: wrap;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
   .endpoint {
     display: flex;
-    flex: 1;
     flex-direction: column;
     margin: 1em;
 
@@ -14,7 +14,8 @@
   }
 
   .chart {
-    flex: 0 0 100%;
+    grid-column-start: 1;
+    grid-column-end: 4;
     padding: 1em;
   }
 }
