@@ -9,7 +9,7 @@ included in this repo: [Faster Paging in Postgres](Faster%20Paging%20in%20Postgr
 
 ## Setup
 
-Requires Ruby 3.0.2. Install dependencies using `bundle install`, then setup
+Requires Ruby 3.1.2. Install dependencies using `bundle install`, then setup
 database with:
 ```
 $ bin/rails db:create db:schema:load db:seed
