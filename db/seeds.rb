@@ -32,6 +32,8 @@ ActiveRecord::Base.transaction do
     WITH (FORMAT CSV, HEADER, DELIMITER '\t', NULL '\\N', QUOTE '|');
   SQL
     imdb_database_file.each_line do |line|
+      next if line.include?("|") # Postgres has problems with some of these lines
+
       raw_connection.put_copy_data(line)
     end
   end
